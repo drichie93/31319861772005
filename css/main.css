@@ -1,0 +1,87 @@
+
+body
+{
+  font-family: 'Open Sans', sans-serif;
+  color: black;
+}
+.workspace
+{
+  /* width: 1024px; */
+  /* text-align: center; */
+}
+
+.hdtitle
+{
+  font-family: 'Teko', sans-serif;
+  font-size:60px;
+  text-align: center;
+  color: #ED1C16;
+}
+
+.header
+{
+  background-color: #292F33;
+  color: white;
+}
+
+.title1
+{
+  padding-top:30px;
+  font-weight: bold;
+  color: white;
+  font-size: 40px;
+}
+
+.createTaskLabel
+{
+  font-size:25px;
+  vertical-align: middle;
+  color: white;
+}
+
+.task
+{
+  /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("http://localhost/task/resources/hero.jpeg");
+
+/* Set a specific height */
+height: 100%;
+
+/* Position and center the image to scale nicely on all screens */
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+/* position: relative; */
+padding-bottom: 180px;
+}
+
+.form
+{
+
+  width: 800px;
+  margin: 0 auto;
+}
+
+.fitem
+{
+  padding-top: 80px;
+
+}
+
+.employee
+{
+  width: 533.33px;
+  height: 40px;
+}
+
+.submit
+{
+  margin-top: 30px;
+  float: right;
+}
+
+.footer
+{
+  height: 160px;
+  background-color: #292F33;
+}

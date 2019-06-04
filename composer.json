@@ -1,0 +1,25 @@
+{
+  "name": "richie/task",
+    "description": "This is an application/website that allows the user to task other employees in an organization and add additional to task.",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Richard Baker",
+            "email": "richard@stolve.com"
+        }
+    ],
+    "require": {},
+
+  "autoload":{
+    "psr-4":{
+        "":"app",
+       "App\\":"app"
+    },
+
+    "classmap" : [
+      "app"
+    ]
+
+}
+}
