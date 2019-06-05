@@ -11,6 +11,8 @@ require_once "../task/vendor/autoload.php";
  */
 class c_profile
 {
+
+
   function startSession()
   {
     session_start();
@@ -35,13 +37,28 @@ class c_profile
   {
     if($this->loginStatus() == 0)
     {
-      $footer = "{ \"content\" : \"Welcome ". $this->currentUser() . "\"}";
-      echo $footer;
+       $footer = "Welcome  " . $this->currentUser();
+      // file_put_contents("../task/app/view/structure/str_json/footer.json",$footer);
+      // return $footer;
+
+      echo "<script>
+      function foot()
+      {
+        document.getElementById('foot').innerHTML = '$footer';
+      }
+      </script>";
     }
 
     else {
       $footer = "{ \"content\" : \"Login to Access Application". "\"}";
-      echo $footer;
+      // file_put_contents("../task/app/view/structure/str_json/footer.json",$footer);
+      // return $footer;
+        echo "<script>
+        function foot()
+        {
+          document.getElementById('foot').innerHTML = '$footer';
+        }
+        </script>";
     }
   }
 }

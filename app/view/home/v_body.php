@@ -44,4 +44,9 @@ function myFunction(myObject) {
 	w3.displayObject("id01", myObject);
 }
 
+w3.getHttpObject("../../task/app/view/structure/str_json/footer.json",foot );
+function foot(foot)
+{
+  w3.displayObject("foot",foot)
+}
 </script>

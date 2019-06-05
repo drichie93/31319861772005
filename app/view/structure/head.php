@@ -24,4 +24,4 @@
 <!-- END JAVASCRIPT FILES -->
 </head>
 
-<body onload="display()">
+<body onload="display(), foot()">

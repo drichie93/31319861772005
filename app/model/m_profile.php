@@ -4,6 +4,7 @@ namespace App\model;
 
 use app\controller\c_profile;
 
+
 require_once "/vendor/autoload.php";
 
 /**
@@ -13,10 +14,17 @@ class m_profile
 {
 
 
-  function createLoginTable()
+  function connect()
   {
     $database = new m_database;
     $conn = $database->connect();
+    return $conn;
+  }
+
+  function createLoginTable()
+  {
+
+    $conn = $this->connect();
     // sql to create table
     $sql = "CREATE TABLE IF NOT EXISTS loginStatus (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -39,8 +47,7 @@ class m_profile
 
   function loginStatus()
   {
-    $database = new m_database;
-    $conn = $database->connect();
+    $conn = $this->connect();
     $this->createLoginTable();
 
     $profile = new c_profile;
@@ -58,10 +65,12 @@ class m_profile
       if($status == 0)
       {
         return 0;
+        $conn->close();
       }
 
       else {
         return 1;
+        $conn->close();
       }
     }
 

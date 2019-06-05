@@ -12,6 +12,8 @@ $home->foot();
 
 $index = new App\Controller\c_index;
 $index->loadEmployees();
+
+$profile = new App\Controller\c_profile;
 ob_flush();
 
  ?>
