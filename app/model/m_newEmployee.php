@@ -7,16 +7,25 @@ require_once "/vendor/autoload.php";
  */
 class m_newEmployee
 {
+
+  function connect()
+  {
+    $database = new m_database;
+    $conn = $database->connect();
+    return $conn;
+  }
     function createTable()
     {
-        $database = new m_database;
-        $conn = $database->connect();
+
+        $conn = $this->connect();
 
         // sql to create table
         $sql = "CREATE TABLE IF NOT EXISTS employees (
         id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         employee VARCHAR(255) NOT NULL,
         employeeID VARCHAR(255) NOT NULL,
+        email VARCHAR(255) NOT NULL,
+        password VARCHAR(255) NOT NULL,
         created TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
         )";
 
@@ -30,13 +39,12 @@ class m_newEmployee
     }
 
 
-  function createEmployee($employee)
+  function createEmployee($employee,$email,$password)
   {
-    $database = new m_database;
-    $conn = $database->connect();
+      $conn = $this->connect();
       $this->createTable();
       $id = rand(100,999);
-       $sql = "INSERT INTO `employees`( `employee`, `employeeID`) VALUES ('$employee','$id')";
+       $sql = "INSERT INTO `employees`( `employee`, `employeeID`,`email`,`password`) VALUES ('$employee','$id','$email','$password')";
        if ($conn->query($sql) === TRUE) {
 
            $result = true;
@@ -52,8 +60,7 @@ class m_newEmployee
 
   function getEmployees()
   {
-      $database = new m_database;
-      $conn = $database->connect();
+        $conn = $this->connect();
       $sql = "SELECT * FROM `employees`";
       if ($result = $conn->query($sql)) {
 

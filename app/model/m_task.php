@@ -7,10 +7,16 @@ require_once "../../vendor/autoload.php";
  */
 class m_task
 {
+
+  function connect()
+  {
+    $database = new m_database;
+    $conn = $database->connect();
+    return $conn;
+  }
     function createTable()
     {
-        $database = new m_database;
-        $conn = $database->connect();
+        $conn = $this->connect();
 
         // sql to create table
         $sql = "CREATE TABLE IF NOT EXISTS tasks (
@@ -31,8 +37,7 @@ class m_task
 
   function createTask($task,$employee)
   {
-    $database = new m_database;
-    $conn = $database->connect();
+      $conn = $this->connect();
       $this->createTable();
        $sql = "INSERT INTO `tasks`( `task`, `employee`) VALUES ('$task', '$employee')";
        if ($conn->query($sql) === TRUE) {

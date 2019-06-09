@@ -45,36 +45,54 @@ class m_profile
 
 
 
-  function loginStatus()
+  function m_loginStatus($employeeID)
   {
     $conn = $this->connect();
     $this->createLoginTable();
 
     $profile = new c_profile;
-    $employeeID = $profile->currentUser();
 
-    $sql = "SELECT * FROM `loginStatus` WHERE `employeeID` = '$employeeID' ORDER BY ID DESC LIMIT 1";
 
-    if ($conn->query($sql) === TRUE)
-    {
-      while($row = mysqli_fetch_array("$sql"))
+    $sql = "SELECT `status` FROM `loginStatus` WHERE `employeeID` = '$employeeID' ORDER BY ID DESC LIMIT 1";
+    $result = $conn->query($sql);
+
+      if ($result->num_rows > 0)
       {
-        $status = $row["status"];
+          // output data of each row
+          while($row = $result->fetch_assoc())
+          {
+              $status = $row["status"];
+          }
       }
-
-      if($status == 0)
+      else
       {
-        return 0;
-        $conn->close();
+          echo "0 results";
       }
 
-      else {
-        return 1;
-        $conn->close();
-      }
+      return $status;
+}
+
+  function getname($username)
+  {
+    $conn = $this->connect();
+
+    $sql = "SELECT `employee` FROM `employees` WHERE `employeeID` = '$username'";
+
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+            $name = $row["employee"];
+        }
+
+        return $name;
+    } else {
+        echo "0 results";
     }
-
+    $conn->close();
   }
+
 }
 
 

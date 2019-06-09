@@ -13,31 +13,39 @@ class c_profile
 {
 
 
+  public $username;
+
+
+
   function startSession()
   {
-    session_start();
-    $status = $_SESSION['status'] = 1;
-    return $status;
+    $this->username = $_COOKIE["user"];
   }
 
-  function currentUser()
-  {
-    $_SESSION['user'] = "785";
-    $currentUser = $_SESSION['user'];
-    return $currentUser;
-  }
 
   function loginStatus()
   {
     $profile = new m_profile;
-    return $profile->loginStatus();
+    $this->startSession();
+    return $profile->m_loginStatus($this->username);
+  }
+
+  function accessControl()
+  {
+    if($this->loginStatus() == 0)
+    {
+      header("location:http://localhost/task/newtask.php");
+    }
   }
 
   function writeFooter()
   {
-    if($this->loginStatus() == 0)
+    if($this->loginStatus($this->username) == 1)
     {
-       $footer = "Welcome  " . $this->currentUser();
+
+      $profile = new m_profile;
+      $name = $profile->getname($this->username);
+       $footer = "Welcome  " . $name;
       // file_put_contents("../task/app/view/structure/str_json/footer.json",$footer);
       // return $footer;
 
@@ -49,8 +57,8 @@ class c_profile
       </script>";
     }
 
-    else {
-      $footer = "{ \"content\" : \"Login to Access Application". "\"}";
+    elseif($this->loginStatus($this->username) == 0) {
+      $footer = "LOGIN TO ACCESS APPLICATION";
       // file_put_contents("../task/app/view/structure/str_json/footer.json",$footer);
       // return $footer;
         echo "<script>
