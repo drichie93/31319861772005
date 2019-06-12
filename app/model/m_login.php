@@ -42,14 +42,18 @@ class m_login
 
     $result = $conn->query($sql);
 
-    if ($result->num_rows > 0) {
+    if ($result->num_rows > 0)
+    {
         // output data of each row
-        while($row = $result->fetch_assoc()) {
+        while($row = $result->fetch_assoc())
+        {
             $name = $row["employee"];
         }
 
         return $name;
-    } else {
+    }
+    else
+    {
         echo "0 results";
     }
     $conn->close();

@@ -16,6 +16,9 @@ $home->foot();
 $index = new App\Controller\c_index;
 $index->loadEmployees();
 
+$newtaskController = new App\Controller\c_newtask;
+$newtaskController->getTasks();
+
 ob_flush();
 
  ?>

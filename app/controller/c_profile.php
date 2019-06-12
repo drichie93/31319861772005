@@ -14,12 +14,16 @@ class c_profile
 
 
   public $username;
-
+  protected $result;
 
 
   function startSession()
   {
-    $this->username = $_COOKIE["user"];
+    if(isset($_COOKIE["user"]))
+    {
+      $this->username = $_COOKIE["user"];
+    }
+
   }
 
 
@@ -32,9 +36,8 @@ class c_profile
 
   function accessControl()
   {
-    if($this->loginStatus() == 0)
-    {
-      header("location:http://localhost/task/newtask.php");
+  if($this->loginStatus($this->username) == 0) {
+      header("location:http://localhost/task/login.php");
     }
   }
 
@@ -45,9 +48,7 @@ class c_profile
 
       $profile = new m_profile;
       $name = $profile->getname($this->username);
-       $footer = "Welcome  " . $name;
-      // file_put_contents("../task/app/view/structure/str_json/footer.json",$footer);
-      // return $footer;
+      $footer = "Welcome  " . $name .  "<br> <a href=\"http://localhost/task/logout.php\">logout</a> ";
 
       echo "<script>
       function foot()
@@ -58,7 +59,7 @@ class c_profile
     }
 
     elseif($this->loginStatus($this->username) == 0) {
-      $footer = "LOGIN TO ACCESS APPLICATION";
+      $footer = "<a href=\"http://localhost/task/login.php\">LOGIN TO ACCESS APPLICATION</a>";
       // file_put_contents("../task/app/view/structure/str_json/footer.json",$footer);
       // return $footer;
         echo "<script>

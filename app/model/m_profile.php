@@ -63,13 +63,14 @@ class m_profile
           {
               $status = $row["status"];
           }
+          return $status;
       }
       else
       {
-          echo "0 results";
+          
       }
 
-      return $status;
+
 }
 
   function getname($username)

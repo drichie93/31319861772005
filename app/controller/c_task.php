@@ -1,15 +1,20 @@
 <?php
+namespace app\controller;
+
+use app\controller\c_profile;
+use app\model\m_task;
 
 require_once "../../vendor/autoload.php";
 /**
  *
  */
-class c_task
+class c_task extends c_profile
 {
   function createTask($task,$employee)
   {
-      $model = new App\model\m_task;
-      $result = $model->createTask($task,$employee);
+      $model = new m_task;
+      $this->startSession();
+      $result = $model->createTask($task,$employee, $this->username);
 
       if($result)
       {

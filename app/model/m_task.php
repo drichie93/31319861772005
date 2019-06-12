@@ -23,6 +23,7 @@ class m_task
         id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         task VARCHAR(255) NOT NULL,
         employee VARCHAR(255) NOT NULL,
+        employeeID VARCHAR(255) NOT NULL,
         created TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
         )";
 
@@ -35,11 +36,12 @@ class m_task
         $conn->close();
     }
 
-  function createTask($task,$employee)
+  function createTask($task,$employee,$id)
   {
       $conn = $this->connect();
       $this->createTable();
-       $sql = "INSERT INTO `tasks`( `task`, `employee`) VALUES ('$task', '$employee')";
+
+       $sql = "INSERT INTO `tasks`( `task`, `employee`,`employeeID`) VALUES ('$task', '$employee','$id')";
        if ($conn->query($sql) === TRUE) {
 
            $result = true;

@@ -82,10 +82,16 @@ padding-bottom: 180px;
 
 .footer
 {
-  height: 160px;
+  height: 333px;
   background-color: #292F33;
   padding:100px;
   color:white;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding-top: 150px;
+  font-size: 30px;
 }
 
 
