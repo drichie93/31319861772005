@@ -24,6 +24,7 @@ class m_task
         task VARCHAR(255) NOT NULL,
         employee VARCHAR(255) NOT NULL,
         employeeID VARCHAR(255) NOT NULL,
+        status VARCHAR(255) NOT NULL,
         created TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
         )";
 
@@ -41,7 +42,7 @@ class m_task
       $conn = $this->connect();
       $this->createTable();
 
-       $sql = "INSERT INTO `tasks`( `task`, `employee`,`employeeID`) VALUES ('$task', '$employee','$id')";
+       $sql = "INSERT INTO `tasks`( `task`, `employee`,`employeeID`,`status`) VALUES ('$task', '$employee','$id','new')";
        if ($conn->query($sql) === TRUE) {
 
            $result = true;

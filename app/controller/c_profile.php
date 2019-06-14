@@ -4,7 +4,7 @@ namespace app\controller;
 
 use App\model\m_profile;
 
-require_once "../task/vendor/autoload.php";
+// require_once "../task/vendor/autoload.php";
 
 /**
  *

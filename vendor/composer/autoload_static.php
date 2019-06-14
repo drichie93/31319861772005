@@ -7,6 +7,10 @@ namespace Composer\Autoload;
 class ComposerStaticInit4087a1c75a4174338d32fd33e71d6312
 {
     public static $prefixLengthsPsr4 = array (
+        'P' => 
+        array (
+            'PHPMailer\\PHPMailer\\' => 20,
+        ),
         'A' => 
         array (
             'App\\' => 4,
@@ -14,6 +18,11 @@ class ComposerStaticInit4087a1c75a4174338d32fd33e71d6312
     );
 
     public static $prefixDirsPsr4 = array (
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
+            1 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
@@ -29,15 +38,19 @@ class ComposerStaticInit4087a1c75a4174338d32fd33e71d6312
         'app\\controller\\c_index' => __DIR__ . '/../..' . '/app/controller/c_index.php',
         'app\\controller\\c_login' => __DIR__ . '/../..' . '/app/controller/c_login.php',
         'app\\controller\\c_logout' => __DIR__ . '/../..' . '/app/controller/c_logout.php',
+        'app\\controller\\c_newtask' => __DIR__ . '/../..' . '/app/controller/c_newtask.php',
         'app\\controller\\c_profile' => __DIR__ . '/../..' . '/app/controller/c_profile.php',
+        'app\\controller\\c_task' => __DIR__ . '/../..' . '/app/controller/c_task.php',
+        'app\\controller\\c_taskHandler' => __DIR__ . '/../..' . '/app/controller/c_taskHandler.php',
         'app\\controller\\c_template' => __DIR__ . '/../..' . '/app/controller/c_template.php',
         'app\\model\\m_database' => __DIR__ . '/../..' . '/app/model/m_database.php',
         'app\\model\\m_login' => __DIR__ . '/../..' . '/app/model/m_login.php',
         'app\\model\\m_logout' => __DIR__ . '/../..' . '/app/model/m_logout.php',
         'app\\model\\m_newEmployee' => __DIR__ . '/../..' . '/app/model/m_newEmployee.php',
+        'app\\model\\m_newtask' => __DIR__ . '/../..' . '/app/model/m_newtask.php',
         'app\\model\\m_task' => __DIR__ . '/../..' . '/app/model/m_task.php',
+        'app\\model\\m_taskHandler' => __DIR__ . '/../..' . '/app/model/m_taskHandler.php',
         'c_newEmployee' => __DIR__ . '/../..' . '/app/controller/c_newEmployee.php',
-        'c_task' => __DIR__ . '/../..' . '/app/controller/c_task.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
